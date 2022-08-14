@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 # -------------------------------------------
 
 # シミュレーションする時間(s)
-total_time = 1
+total_time = 5
 # シミュレーション幅(短いほど正確)
 time_step = 0.01
 # 再生速度
@@ -48,10 +48,12 @@ p.setTimeStep(time_step)
 p.setGravity(gravity[0], gravity[1], gravity[2])
 
 # 地面の読み込み
-p.loadURDF("base.urdf")
+base_id = p.loadURDF("base.urdf")
+p.changeDynamics(base_id, -1, restitution=0.9, lateralFriction=0.9)
 
 # URDFファイルの読み込み
 robot_id = p.loadURDF(file_path, init_pos, flags= p.URDF_USE_INERTIA_FROM_FILE)
+p.changeDynamics(robot_id, -1, restitution=0.9, lateralFriction=0.9)
 
 # -------------------------------------------
 # シミュレーション
