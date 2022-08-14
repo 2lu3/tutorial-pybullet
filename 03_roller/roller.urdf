@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<robot name="roller">
+  <link name="base_link">
+    <mass value="0" />
+  </link>
+
+  <link name="left_roller">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <cylinder length="1" radius="0.2" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <cylinder length="1" radius="0.2" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_left_roller" type="continuous">
+    <axis xyz="0 0 1" />
+    <parent link="base_link" />
+    <child link="left_roller" />
+    <origin xyz="0.4 0 0 " />
+  </joint>
+
+  <link name="right_roller">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <cylinder length="1" radius="0.25" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <cylinder length="1" radius="0.25" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_right_roller" type="continuous">
+    <axis xyz="0 0 1" />
+    <parent link="base_link" />
+    <child link="right_roller" />
+    <origin xyz="-0.4 0 0 " />
+  </joint>
+
+</robot>
